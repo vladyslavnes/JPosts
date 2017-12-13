@@ -1,0 +1,26 @@
+@import 'materialize';
+
+.noArticles {
+	display: inline-block;
+	font-weight: bolder;
+	animation: spinner 10s ease-in-out infinite;
+}
+
+.modal {
+	.flow-text {
+		padding: 20px;
+	}
+}
+
+footer {
+	padding: 10px;
+}
+
+@keyframes spinner {
+	0% {
+		transform: rotateY(0deg);
+	}
+	100% {	
+		transform: rotateY(3600deg);
+	}
+}

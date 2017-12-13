@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JPosts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="./css/main.min.css">
+</head>
+<body class="container grey lighten-4">
+<header>
+	<h1>JPosts</h1>
+</header>
+<button data-target="addNewArticle" class="btn modal-trigger">Add new article</button>
+<div id="addNewArticle" class="modal card-panel row">
+	<h4 class="flow-text col s12">Add new article</h4>
+	<div class="input-field col">
+		<input type="text" id="newArticleTitle">
+		<label for="newArticletitle">Title</label>
+	</div>
+	<div class="input-field col s12 m6">
+		<input type="text" id="newArticleImage">
+		<label for="newArticleImage">Image path</label>
+	</div>
+	<div class="input-field col s12">
+		<textarea id="newArticleText" class="materialize-textarea"></textarea>
+		<label for="newArticleText">Article text</label>
+	</div>
+
+		<button class="btn col addNewArticle modal-close">Add article</button>
+</div>
+<main><h3 class="noArticles flow-text">Loading articles</h3></main>
+
+<footer>Copyright &copy; 2017 Vladyslav Nesterenko</footer>
+
+<!-- <script
+        src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script> -->
+        <script src="./js/jquery.min.js"></script>
+        <script src="./js/materialize.min.js"></script>
+        <script src="./js/main.js"></script>
+</body>
+</html>
