@@ -19,7 +19,7 @@ function render() {
 render()
 
 function makeCard(id,title,text,img) {
-	return $('main').append('<div class="card-panel card-image" id="preview_'+id+'">'+ '<img style="width: 100%;" src="'+img+'" alt="'+title+'">'+ '<h4 class="card-title">'+title+'</h4>'+ '<div class="card-content">'+ '<p class="desciption flow-text">'+text.split(' ').slice(0,41).join(' ')+'...</p>'+ '<div class="card-action">'+ '<button class="btn-flat modal-trigger" data-target="fullArticle_'+id+'" onclick="fullTextCard('+id+')">Read All</button>'+ '<button id="'+id+'" class="btn-flat" onclick="deleteCard('+id+')">Delete</button>'+ '</div>'+ '</div>'+ '</div> <div id="fullArticle_'+id+'" class="modal modal-fixed-footer modal-content"><p class="flow-text">'+text+'</p><div class="modal-footer"><button onclick="editCard('+id+')" class="modal-action btn-flat btn-large waves-effect">Edit</button><button class="modal-action btn-flat btn-large waves-effect waves-green">Save</button></div></div>')
+	return $('main').append('<div class="card-panel card-image" id="preview_'+id+'">'+ '<img style="width: 100%;" src="'+img+'" alt="'+title+'">'+ '<h4 class="card-title">'+title+'</h4>'+ '<div class="card-content">'+ '<p class="desciption flow-text">'+text.split(' ').slice(0,41).join(' ')+'...</p>'+ '<div class="card-action">'+ '<button class="btn-flat modal-trigger" data-target="fullArticle_'+id+'" onclick="fullTextCard('+id+')">Read All</button>'+ '<button id="'+id+'" class="btn-flat" onclick="deleteCard('+id+')">Delete</button>'+ '</div>'+ '</div>'+ '</div> <div id="fullArticle_'+id+'" class="modal modal-fixed-footer modal-content"><h2>'+title+'</h2><p class="flow-text">'+text+'</p><div class="modal-footer"><button onclick="editCard('+id+')" class="modal-action btn-flat btn-large waves-effect">Edit</button><button onclick="saveCard('+id+')" class="modal-action btn-flat btn-large waves-effect waves-green">Save</button></div></div>')
 }
 
 function deleteCard(id) {
@@ -39,37 +39,21 @@ function addCard(title,text,img) {
 	render()
 }
 
-$('.btn-flat.addNewArticle').click(function() {	
-	addCard($('input[name="newArticleTitle"]').val(),$('textarea[name="newArticleText"]').val(),$('input[name="newArticleImage"]').val())
-	$('input[name="newArticleTitle"]').val(''),$('textarea[name="newArticleText"]').val(''),$('input[name="newArticleImage"]').val('')
+$('.btn.addNewArticle').click(function() {	
+	addCard($('input#newArticleTitle').val(),$('textarea#newArticleText').val(),$('input#newArticleImage').val())
+	$('input#newArticleTitle').val(''),$('textarea#newArticleText').val(''),$('input#newArticleImage').val('')
 })
 	
 function fullTextCard(id) {
 	$('#fullArticle_'+id).modal()
 }
 
-// function fullTextCard(id,e) {
-// 	$('.modal').modal()	
-// }
-
-// $('.btn-flat.fullTextCard').click(function() {
-
-// })
-
 function editCard(id) {
-	fullTextCard(id)
-	$('#fullArticle_'+id+' p').hide()
-	$('#fullArticle_'+id).append('<textarea id="textInput_'+id+'">'+$('#fullArticle_'+id+' p').text+'</textarea>')
-	$('#fullArticle_'+id+' btn.save').show()
-	
-	// .after($('<input type="text" id="" />'))
+	$('#fullArticle_'+id).find('h2, .flow-text').attr('contenteditable','true')
 }
 
-
-/*$('.btn-flat.editCard').click(function() {
-	console.log(var card = $(this).parent().parent().parent(),
-	var id = card.attr('id'),
-	card.find($('.description').val()),
-	card.find($('h4').attr('contenteditable','true')),
-	card.find($('img').after($('input').val($('input[name="newArticleImage"]').prop('src'))))
-})*/
+function saveCard(id) {
+	window.posts[id].text = $('#fullArticle_'+id+' p').text()
+	localStorage.posts = JSON.stringify(window.posts)
+	render()
+}
