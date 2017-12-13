@@ -1,5 +1,9 @@
 @import 'materialize';
 
+body {
+	overflow-x: none;
+}
+
 .noArticles {
 	display: inline-block;
 	font-weight: bolder;

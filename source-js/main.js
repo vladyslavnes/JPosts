@@ -27,20 +27,30 @@ function deleteCard(id) {
 	render()
 }
 
-function addCard(title,text,img) {
-	window.posts.push(
-		{
-			id: window.lastCardID++,
-			title: title,
-			text: text,
-			img: img
-		}
-	)
+function addImage(e) {
+	console.log($('#imageInput')[0].files[0],e)
+	var file = document.querySelector('#imageInput').files[0]
+	var reader = new FileReader()
+
+	reader.onloadend = function () {
+		window.img = reader.result
+	}
+
+	reader.readAsDataURL(file)
+}
+
+function addCard(title,text) {
+	window.posts.push({
+		id: window.lastCardID++,
+		title: title,
+		text: text,
+		img: window.img
+	})
 	render()
 }
 
 $('.btn.addNewArticle').click(function() {	
-	addCard($('input#newArticleTitle').val(),$('textarea#newArticleText').val(),$('input#newArticleImage').val())
+	addCard($('input#newArticleTitle').val(),$('textarea#newArticleText').val())
 	$('input#newArticleTitle').val(''),$('textarea#newArticleText').val(''),$('input#newArticleImage').val('')
 })
 	

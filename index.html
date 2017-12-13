@@ -13,14 +13,23 @@
 <button data-target="addNewArticle" class="btn modal-trigger">Add new article</button>
 <div id="addNewArticle" class="modal card-panel row">
 	<h4 class="flow-text col s12">Add new article</h4>
-	<div class="input-field col">
+	<div class="input-field col s12 m6">
 		<input type="text" id="newArticleTitle">
 		<label for="newArticletitle">Title</label>
 	</div>
-	<div class="input-field col s12 m6">
-		<input type="text" id="newArticleImage">
-		<label for="newArticleImage">Image path</label>
+
+
+	<div class="file-field input-field col s12 m6">
+		<div class="btn">
+			<span>File</span>
+			<input type="file" id="imageInput" onchange="addImage(event)">
+		</div>
+		<div class="file-path-wrapper">
+			<input class="file-path validate" type="text">
+		</div>
 	</div>
+
+
 	<div class="input-field col s12">
 		<textarea id="newArticleText" class="materialize-textarea"></textarea>
 		<label for="newArticleText">Article text</label>
