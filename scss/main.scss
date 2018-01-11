@@ -1,7 +1,7 @@
 @import 'materialize';
 
 body {
-	overflow-x: none;
+	overflow-x: hidden;
 }
 
 .noArticles {
@@ -11,6 +11,7 @@ body {
 }
 
 .modal {
+	overflow-x: hidden;
 	.flow-text {
 		padding: 20px;
 	}
